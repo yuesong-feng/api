@@ -14,6 +14,7 @@ router
   })
   .get(`/articles`, async (ctx) => {
     let msg = await Article.find();
+    msg.reverse();
     ctx.body = msg;
   })
   .get('/content/:title', async (ctx) => {
@@ -21,13 +22,13 @@ router
     let msg = await Article.findOne({"title": title})
     ctx.body = msg
   })
-  .get('/add', async ctx => {
-    const thing = new Article()
-    thing.title = "添加文章测试"
-    thing.author = "yuesong-feng"
-    thing.content = "this is a test for adding new content"
-    await thing.save()
-    ctx.body = "add success"
+  .post('/add', async ctx => {
+    const newArticle = new Article()
+    newArticle.title = ctx.request.body.title
+    newArticle.author = ctx.request.body.author
+    newArticle.content = ctx.request.body.content
+    await newArticle.save()
+    ctx.body = "success"
   })
 
 module.exports = router

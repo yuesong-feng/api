@@ -1,0 +1,8 @@
+POST http://localhost:8080/add
+content-type: application/json
+
+{
+  "title": "Test",
+  "author": "yuesong-feng",
+  "content": "this is the content"
+}
