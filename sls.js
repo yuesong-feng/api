@@ -3,7 +3,6 @@ const Koa = require("koa");
 const app = new Koa();
 const router = require("./router");
 
-
 app.use(async (ctx, next) => {
   ctx.set("Access-Control-Allow-Origin", "*");
   ctx.set(
@@ -17,3 +16,6 @@ app.use(router.allowedMethods()).use(router.routes());
 
 // don't forget to export!
 module.exports = app;
+
+//dev mode
+app.listen(8080, () => console.log(`http://localhost:8080/`));
