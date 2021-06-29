@@ -7,6 +7,9 @@ inputs:
     src: ./ # (optional) path to the source folder. default is a hello world app.
     exclude:
       - .env
+      - node_modules
+      - .gitignore
+      - test.http
   region: ap-guangzhou
   runtime: Nodejs10.15
   apigatewayConf:
